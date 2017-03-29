@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 20170329151307) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "text"
+    t.integer  "user_id"
     t.integer  "commentable_id",   null: false
     t.string   "commentable_type", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 20170329151307) do
     t.index ["user_id"], name: "index_watchlists_on_user_id", using: :btree
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "favorites", "movies"
   add_foreign_key "favorites", "users"
   add_foreign_key "reviews", "movies"
