@@ -1,2 +1,27 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
+<table>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td>
+        <%= image_tag("movie.poster") %>
+      </td>
+      <td>
+        <strong><%= movie.title %></strong>
+      </td>
+      <td>
+        <%= movie.genre %>
+      </td>
+      <td>
+        <%= movie.release_date %>
+      </td>
+      <td>
+        <%= movie.plot_summary %>
+      </td>
+      <td>
+        <%= movie.production %>
+      </td>
+      <td>
+        <%= movie.website %>
+      </td>
+    </tr>
+  <% end %>
+</table>
