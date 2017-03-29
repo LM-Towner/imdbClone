@@ -15,7 +15,6 @@ OMDB_BASEURL = 'http://www.omdbapi.com/?'
   uri = URI(OMDB_BASEURL + "i=#{id}")
   response = Net::HTTP.get(uri)
   movie = JSON.parse(response)
-  binding.pry
   Movie.create(title: movie["Title"],
                genre: movie["Genre"],
                release_date: DateTime.parse(movie["Released"]),

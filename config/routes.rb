@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'movies/index'
-
-  get 'movies/show'
+  resources :movies, only: [:index, :show]
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
 

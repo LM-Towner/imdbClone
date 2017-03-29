@@ -12,7 +12,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <img src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo">
-    <%= form_tag( movies_index_path, method: "get", id: "search-form") do %>
+    <%= form_tag( movies_path, method: "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "The Land Before Time" %>
       <%= submit_tag "Search Movies" %>
     <% end %>
