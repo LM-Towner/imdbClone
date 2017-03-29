@@ -17,19 +17,21 @@ ActiveRecord::Schema.define(version: 20170329151307) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "text"
+    t.integer  "user_id"
     t.integer  "commentable_id",   null: false
     t.string   "commentable_type", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer  "users_id"
-    t.integer  "movies_id"
+    t.integer  "user_id"
+    t.integer  "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movies_id"], name: "index_favorites_on_movies_id", using: :btree
-    t.index ["users_id"], name: "index_favorites_on_users_id", using: :btree
+    t.index ["movie_id"], name: "index_favorites_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
   create_table "movies", force: :cascade do |t|
@@ -47,12 +49,12 @@ ActiveRecord::Schema.define(version: 20170329151307) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
     t.text     "text"
-    t.integer  "users_id"
-    t.integer  "movies_id"
+    t.integer  "user_id"
+    t.integer  "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movies_id"], name: "index_reviews_on_movies_id", using: :btree
-    t.index ["users_id"], name: "index_reviews_on_users_id", using: :btree
+    t.index ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,18 +76,19 @@ ActiveRecord::Schema.define(version: 20170329151307) do
   end
 
   create_table "watchlists", force: :cascade do |t|
-    t.integer  "users_id"
-    t.integer  "movies_id"
+    t.integer  "user_id"
+    t.integer  "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movies_id"], name: "index_watchlists_on_movies_id", using: :btree
-    t.index ["users_id"], name: "index_watchlists_on_users_id", using: :btree
+    t.index ["movie_id"], name: "index_watchlists_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_watchlists_on_user_id", using: :btree
   end
 
-  add_foreign_key "favorites", "movies", column: "movies_id"
-  add_foreign_key "favorites", "users", column: "users_id"
-  add_foreign_key "reviews", "movies", column: "movies_id"
-  add_foreign_key "reviews", "users", column: "users_id"
-  add_foreign_key "watchlists", "movies", column: "movies_id"
-  add_foreign_key "watchlists", "users", column: "users_id"
+  add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "movies"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "reviews", "movies"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "watchlists", "movies"
+  add_foreign_key "watchlists", "users"
 end
