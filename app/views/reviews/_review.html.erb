@@ -1,0 +1,11 @@
+<div class='review'>
+  <h4><%= '🌟' * review.rating %></h4>
+  <p><%= review.text %></p>
+  <div>
+    <p><%= review.user.username %></p>
+    <p><%= distance_of_time_in_words(Time.now, review.created_at) %> ago</p>
+  </div>
+  <div class='review-comments'>
+    <%= render review.comments %>
+  </div>
+</div>
