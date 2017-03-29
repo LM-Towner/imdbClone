@@ -7,4 +7,8 @@ class Movie < ApplicationRecord
   private
   has_many :favorites
   has_many :watchlists
+
+  def self.search(search)
+    where("title LIKE ? OR genre LIKE ? OR plot_summary LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
 end
