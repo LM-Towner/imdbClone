@@ -1,0 +1,31 @@
+<table>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td>
+        <%= link_to movie_url(movie) do %>
+          <img src="<%= movie.poster %>" alt=" <%= movie.title %> ">
+        <% end %>
+      </td>
+      <td>
+        <%= link_to movie_url(movie) do %>
+          <strong><%= movie.title %></strong>
+        <% end %>
+      </td>
+      <td>
+        <%= movie.genre %>
+      </td>
+      <td>
+        <%= movie.release_date %>
+      </td>
+      <td>
+        <%= movie.plot_summary %>
+      </td>
+      <td>
+        <%= movie.production %>
+      </td>
+      <td>
+        <%= movie.website %>
+      </td>
+    </tr>
+  <% end %>
+</table>

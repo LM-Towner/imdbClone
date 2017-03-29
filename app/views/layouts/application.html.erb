@@ -11,12 +11,12 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= link_to movies_index_path do %>
+    <%= link_to movies_url do %>
       <%= image_tag "IMDB.jpeg" %>
     <% end %>
-    <%= form_tag( movies_show_path, method: "get", id: "search-form") do %>
+    <%= form_tag search_url, method: "get", id: "search-form" do %>
       <%= text_field_tag :search, params[:search], placeholder: "The Land Before Time" %>
-      <%= submit_tag "Search Movies" %>
+      <%= submit_tag "Search Movies", name: nil %>
     <% end %>
     <%= yield %>
   </body>
