@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'movies/show'
 
+  get '/users/show'
+
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
   root to: 'movies#index'
