@@ -10,12 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329142852) do
+ActiveRecord::Schema.define(version: 20170329151307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "users_id"
+    t.integer  "movies_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movies_id"], name: "index_favorites_on_movies_id", using: :btree
+    t.index ["users_id"], name: "index_favorites_on_users_id", using: :btree
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string   "title",        null: false
+    t.string   "genre"
+    t.date     "release_date"
+    t.string   "plot_summary"
+    t.string   "production"
+    t.string   "poster"
+    t.string   "website"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "text"
+    t.integer  "users_id"
+    t.integer  "movies_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movies_id"], name: "index_reviews_on_movies_id", using: :btree
+    t.index ["users_id"], name: "index_reviews_on_users_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
+    t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -32,4 +73,19 @@ ActiveRecord::Schema.define(version: 20170329142852) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "watchlists", force: :cascade do |t|
+    t.integer  "users_id"
+    t.integer  "movies_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movies_id"], name: "index_watchlists_on_movies_id", using: :btree
+    t.index ["users_id"], name: "index_watchlists_on_users_id", using: :btree
+  end
+
+  add_foreign_key "favorites", "movies", column: "movies_id"
+  add_foreign_key "favorites", "users", column: "users_id"
+  add_foreign_key "reviews", "movies", column: "movies_id"
+  add_foreign_key "reviews", "users", column: "users_id"
+  add_foreign_key "watchlists", "movies", column: "movies_id"
+  add_foreign_key "watchlists", "users", column: "users_id"
 end
