@@ -1,2 +1,36 @@
-<h1>Movies#show</h1>
-<p>Find me in app/views/movies/show.html.erb</p>
+<img src="<%= @movie.poster %>">
+<h2><%= @movie.title %></h2>
+<h4><%= @movie.production%>, <%= @movie.release_date.year %></h4>
+<div class='movie-details'>
+  <p>
+    <span><%= @movie.watchlisting_users.count %> watchlists</span>
+    <span><%= @movie.favoriting_users.count %> favorites</span>
+  </p>
+  <p><%= @movie.genre %></p>
+  <p><%= @movie.plot_summary %></p>
+</div>
+<h3>Reviews</h3>
+<div class='reviews-container'>
+  <div class='review-form'>
+    <h4>Add a Review</h4>
+    <%= form_for([@movie, Review.new]) do |f| %>
+      <fieldset>
+        <%= f.label :rating %>
+        <%= f.select(:rating, options_for_select([["🌟", 1],["🌟🌟", 2],["🌟🌟🌟", 3], ["🌟🌟🌟🌟", 4]])) %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :text %>
+        <%= f.text_area :text %>
+      </fieldset>
+      <%= f.submit %>
+    <% end %>
+  </div>
+  <%= render @movie.reviews %>
+</div>
+<h3>Comments</h3>
+<%= render 'comments/form' %>
+<div class='movie-comments-container'>
+  <h4>Add a Comment</h4>
+
+  <%= render @movie.comments %>
+</div>
