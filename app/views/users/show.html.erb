@@ -17,7 +17,7 @@
     <h3><%= @user.username%>'s watchlists </h3>
       <ul>
       <% user.watchlist.each do |watchlist| %>
-      <li>linkto "Watchlist", watchlist_path(watchlist)</li>
+      <li>link_to "Watchlist", watchlist_path(watchlist)</li>
       <% end %>
     </ul>
 </div>
@@ -27,7 +27,7 @@
       <ul>
       <% user.watchlist.each do |watchlist| %>
       <li>
-        linkto "Watchlist", watchlist_path(watchlist)
+        link_to "Watchlist", watchlist_path(watchlist)
       </li>
       <% end %>
     </ul>
