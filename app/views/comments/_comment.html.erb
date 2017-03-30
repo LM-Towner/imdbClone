@@ -3,5 +3,8 @@
   <div class='conversation-footer'>
     <span><%= comment.user.username %></span>
     <span><%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</span>
+    <% if comment.user == current_user %>
+      <%= link_to 'Delete This', comment_path(comment), method: :delete %>
+    <% end %>
   </div>
 </div>

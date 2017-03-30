@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
+  resources :reviews, only: [:destroy]
+  resources :comments, only: [:destroy]
+
   get 'search', to: "movies#search"
 
   devise_for :users, controllers: { sessions: 'users/sessions' }

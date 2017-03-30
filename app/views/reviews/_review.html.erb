@@ -4,6 +4,9 @@
   <div class='conversation-footer'>
     <span><%= review.user.username %></span>
     <span><%= distance_of_time_in_words(Time.now, review.created_at) %> ago</span>
+    <% if review.user == current_user %>
+      <%= link_to "Delete This", review_path(review), method: :delete %>
+    <% end %>
   </div>
   <div class='review-comments'>
     <%= render review.comments %>
