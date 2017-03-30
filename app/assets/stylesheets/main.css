@@ -10,11 +10,15 @@
 
 }
 
-.actions {
+.waves-effect.waves-light {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  font-size: 110%;
+  display: inline;
+  background-color: gray;
+  /*padding-left: 300px;*/
+  margin-left: 800px;
+  text-align: left;
 
 
 }
@@ -27,4 +31,8 @@
 p {
   display: inline;
   font-size: 1.6em;
+}
+
+html {
+  font-style: bold;
 }
