@@ -39,16 +39,21 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
+  <div class="btn waves-effect waves-light">
     <%= f.submit "Update" %>
-  </div>
-<% end %>
+    <% end %>
+  </div><br>
+
+<hr>
 
 <div class="field">
 
-<h3 class= "field" >Cancel my account</h3>
+<p>Want to cancel your account?</p>
+<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %><br>
+</div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+
+<div class="field">
+  <%= link_to "Back", :back %>
 </div>
