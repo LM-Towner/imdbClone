@@ -53,3 +53,7 @@ li {
 
   padding-left: 30px;
 }
+
+.review-form select {
+  display: inline;
+}
