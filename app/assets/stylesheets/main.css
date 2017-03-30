@@ -1,0 +1,55 @@
+#nav-wrapper {
+  background-color: gray;
+
+}
+
+.field {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+
+}
+
+.waves-effect.waves-light {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  display: inline;
+  background-color: gray;
+  /*padding-left: 300px;*/
+  margin-left: 800px;
+  text-align: left;
+
+
+}
+
+ h2 {
+  display: inline;
+  font-size: 1.6em;
+}
+
+p {
+  display: inline;
+  font-size: 1.6em;
+}
+
+html {
+  font-style: bold;
+}
+
+h3 {
+  font-size: 10px;
+  padding-left: 30px;
+}
+
+.container {
+   display: inline-block;
+   position: relative;
+   width: 100%;
+
+}
+
+li {
+
+  padding-left: 30px;
+}

@@ -2,15 +2,22 @@
 <html>
   <head>
     <title>ImdbClone</title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <img src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo">
+
+    <img class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo">
     <%= form_tag( movies_path, method: "get", id: "search-form") do %>
       <% end %>
     <%= form_tag search_url, method: "get", id: "search-form" do %>
@@ -30,7 +37,7 @@
             <%= link_to("My Profile")%>
           </li>
             <% else %>
-            <li>
+          <li>
             <%= link_to('Login', new_user_session_path)  %>
           </li>
           <li>

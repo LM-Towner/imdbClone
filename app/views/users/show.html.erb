@@ -1,34 +1,37 @@
-<div class="">
+<div class="field">
   <h2><%=@user.username%>'s Profile</h2>
 </div>
 
 <hr>
 
-<div class="">
-  <h3>All of <%=@user.username%>'s favorite_movies</h3>
+
+<div class="container">
+  <h3>All of <%=@user.username%>'s Favorite Movies</h3>
   <ul>
     <%@user.favorite_movies.each do |movie|  %>
-      <li>link_to "Movie", movie_path(movie)</li>
+    <li>  <%= movie.title %></li>
+
     <% end %>
   </ul>
 </div>
+ <hr>
 
-<div class="">
+<div class="container">
     <h3><%= @user.username%>'s watchlists </h3>
       <ul>
-      <% user.watchlist.each do |watchlist| %>
-      <li>link_to "Watchlist", watchlist_path(watchlist)</li>
+      <% @user.watchlist.each do |watchlist| %>
+
       <% end %>
     </ul>
 </div>
 
-<div class="">
-    <h3><%= @user.username%>'s watchlists </h3>
+<hr>
+
+<div class="container">
+    <h3><%= @user.username%>'s comments </h3>
       <ul>
-      <% user.watchlist.each do |watchlist| %>
-      <li>
-        link_to "Watchlist", watchlist_path(watchlist)
-      </li>
+      <% @user.comments.each do |comments| %>
+      <li><%= comments.text %></li>
       <% end %>
     </ul>
 </div>
