@@ -7,13 +7,15 @@ class MoviesController < ApplicationController
 
 
   def search
-    if params[:search] != "" && Movie.database_query(params[:search]) != "Movie not found!"
+    if params[:search] == ""
+      redirect_to :back
+    elsif Movie.database_query(params[:search]) == "Movie not found!"
+      flash[:alert] = "Movie not found!"
+      redirect_to :back
+    else
       @movie = Movie.database_query(params[:search])
       @commentable = Movie.find(@movie.id)
       render "movies/show"
-    else
-      flash[:alert] = "Movie not found!"
-      redirect_to :back
     end
   end
 
