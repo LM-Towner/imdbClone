@@ -18,6 +18,26 @@ class CommentsController < ApplicationController
     redirect_to :back
   end
 
+  def edit
+    @comment = Comment.find_by(id: params[:id])
+    if @comment && @comment.user == current_user
+      render 'edit'
+    else
+      redirect_to :back
+    end
+  end
+
+  def update
+    @comment = Comment.find_by(id: params[:id])
+    if @comment && @comment.user == current_user
+      @comment.update_attributes(comment_params)
+      @comment.save
+      redirect_to movie_path(Movie.find_by(id: @comment.find_closest_movie_id))
+    else
+      redirect_to :back
+    end
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:text)

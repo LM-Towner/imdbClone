@@ -18,6 +18,26 @@ class ReviewsController < ApplicationController
     redirect_to :back
   end
 
+  def edit
+    @review = Review.find_by(id: params[:id])
+    if @review && @review.user == current_user
+      render 'edit'
+    else
+      redirect_to :back
+    end
+  end
+
+  def update
+    @review = Review.find_by(id: params[:id])
+    if @review && @review.user == current_user
+      @review.update_attributes(review_params)
+      @review.save
+      redirect_to movie_path(@review.movie)
+    else
+      redirect_to :back
+    end
+  end
+
   private
   def review_params
     params.require(:review).permit(:rating, :text)
