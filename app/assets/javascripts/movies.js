@@ -1,8 +1,20 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-$(document).ready ->
+$(document).ready(function(){
 
-  $("#new-review").on("ajax:success", (e, data, status, xhr) ->
-    $("#new-review").append xhr.responseText
-  ).on ("ajax:error", (e, xhr, status, error) ->
-    $("#new-review").append "<p>ERROR</p>"
+  $(".reviews-container").on("submit", "#new-review", function(e){
+    debugger;
+    e.preventDefault();
+    $.ajax({
+      url: $(this).attr("action"),
+      method: $(this).attr("method"),
+      data: $(this).serialize(),
+    }).done(function(response){
+      console.log(response);
+      debugger;
+    })
+
+  })
+
+
+})
