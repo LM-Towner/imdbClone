@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
       @comment = @commentable.comments.build(comment_params)
       @comment.user = current_user
       @comment.save
+      track_activity @comment
       #error handling?
       redirect_to :back
     else
@@ -20,7 +21,6 @@ class CommentsController < ApplicationController
   def find_commentable
     params.each do |name, value|
       if name =~ /(.+)_id$/
-        binding.pry
         return $1.classify.constantize.find(value)
       end
     end

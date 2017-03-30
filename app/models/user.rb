@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :favorite_movies, through: :favorites, source: :movie
   has_many :watchlist_movies, through: :watchlists, source: :movie
+  has_many :activities
 
   validates :username, :email, presence: true
   validates :email, uniqueness: true

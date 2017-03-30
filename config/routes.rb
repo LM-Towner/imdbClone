@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :activities
   resources :movies, only: [:index, :show] do
     resources :comments, only: [:create]
     resources :reviews, only: [:create]

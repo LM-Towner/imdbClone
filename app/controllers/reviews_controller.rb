@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
       @review = @movie.reviews.build(review_params)
       @review.user = current_user
       @review.save
+      # current_user.activities.create! action: "create", trackable: review
+      track_activity @review
       #error handling?
       redirect_to :back
     else
