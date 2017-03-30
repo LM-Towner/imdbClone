@@ -15,24 +15,24 @@ class Movie < ApplicationRecord
   has_many :watchlists
 
   def self.database_query(query)
-
-    uri = URI(URL + "t=#{query}")
-    response = Net::HTTP.get(uri)
-    movie = JSON.parse(response)
-
     if self.find_by(title: query)
-      return self.preload(:reviews, :comments, :reviewing_users, :commenting_users).find_by(title: query)
+      return self.find_by(title: query)
     else
-      if movie["Response"] == "True"
-        self.create(title: movie["Title"],
-                     genre: movie["Genre"],
-                     release_date: DateTime.parse(movie["Released"]),
-                     plot_summary: movie["Plot"],
-                     production: movie["Production"],
-                     poster: movie["Poster"],
-                     website: movie["Website"])
+      uri = URI(URL + "t=#{query}")
+      response = Net::HTTP.get(uri)
+      response = JSON.parse(response)
+      if response["Response"] == "True"
+        movie = self.new(title: response["Title"],
+                     genre: response["Genre"],
+                     release_date: DateTime.parse(response["Released"]),
+                     plot_summary: response["Plot"],
+                     production: response["Production"],
+                     poster: response["Poster"],
+                     website: response["Website"])
+        movie.save
+        movie
       else
-        movie["Error"]
+        response["Error"]
       end
     end
   end

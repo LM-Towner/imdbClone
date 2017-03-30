@@ -1,11 +1,10 @@
-<img src="<%= @movie.poster %>">
-<h2><%= @movie.title %></h2>
-<h4><%= @movie.production%>, <%= @movie.release_date.year %></h4>
 <div class='movie-details'>
-  <p>
+  <img src="<%= @movie.poster %>" class='movie-poster'>
+  <h2><%= @movie.title %></h2>
+  <h4><%= @movie.production%>, <%= @movie.release_date.year %></h4>
+  <p class='watchlists-and-favorites'>
     <span><%= @movie.watchlisting_users.count %> watchlists</span>
     <span><%= @movie.favoriting_users.count %> favorites</span>
-
     <% if @movie.watchlisting_users.include?(current_user) %>
       <%= link_to 'Remove from Watchlist', [@movie, @movie.watchlists.find_by(user_id: current_user.id)], method: :delete %>
     <% else %>
@@ -20,15 +19,15 @@
   <p><%= @movie.genre %></p>
   <p><%= @movie.plot_summary %></p>
 </div>
-<h3>Reviews</h3>
-<% if !@movie.reviewing_users.include?(current_user) %>
-  <%= render 'reviews/form' %>
-<% end %>
-<%= render @movie.reviews %>
 <div class='reviews-container'>
+  <h3>Reviews</h3>
+  <% if !@movie.reviewing_users.include?(current_user) %>
+    <%= render 'reviews/form' %>
+  <% end %>
+  <%= render @movie.reviews %>
 </div>
-<h3>Conversations</h3>
 <div class='movie-comments-container'>
+  <h3>Conversations</h3>
   <h4>Start a Conversation</h4>
   <%= render partial: 'comments/form', locals: { commentable: @movie } %>
   <%= render @movie.comments %>
