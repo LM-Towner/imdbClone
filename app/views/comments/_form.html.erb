@@ -1,8 +1,6 @@
 <div class='comment-form'>
   <%= form_for([commentable, Comment.new]) do |f| %>
-    <fieldset>
-      <%= f.text_area :text %>
-    </fieldset>
+    <%= f.text_area :text %>
     <%= f.submit %>
   <% end %>
 </div>

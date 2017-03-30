@@ -7,11 +7,11 @@
       <%= link_to 'Delete This', comment_path(comment), method: :delete %>
       <%= link_to 'Edit This', edit_comment_path(comment) %>
     <% end %>
+  </div>
+  <div class='comment-comments'>
     <% if comment.commentable.is_a?(Movie) %>
       <%= render partial: 'comments/form', locals: { commentable: comment } %>
     <% end %>
-    <div class='comment-comments'>
-      <%= render comment.comments %>
-    </div>
+    <%= render comment.comments %>
   </div>
 </div>

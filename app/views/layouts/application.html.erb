@@ -19,7 +19,9 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <img class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo">
+
+    <a href="/"><img class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo"></a>
+
     <%= form_tag( movies_path, method: "get", id: "search-form") do %>
       <% end %>
     <%= form_tag search_url, method: "get", id: "search-form" do %>
@@ -40,7 +42,7 @@
             <%= link_to("My Profile")%>
           </li>
             <% else %>
-            <li>
+          <li>
             <%= link_to('Login', new_user_session_path)  %>
           </li>
           <li>
@@ -49,8 +51,8 @@
         <% end %>
       </ul>
     </nav>
-
-    <%= yield %>
-
+    <div id='content-wrapper'>
+      <%= yield %>
+    </div>
   </body>
 </html>
