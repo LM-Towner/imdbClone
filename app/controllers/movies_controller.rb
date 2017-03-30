@@ -7,8 +7,10 @@ class MoviesController < ApplicationController
 
 
   def search
-    if Movie.search(params[:search])
-      @movies = Movie.search(params[:search])
+    if Movie.database_query(params[:search])
+      @movie = Movie.database_query(params[:search])
+      @commentable = Movie.find(@movie.id)
+      render "movies/show"
     else
       notice "No movie with that information"
     end
