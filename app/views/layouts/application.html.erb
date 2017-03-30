@@ -15,9 +15,11 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
   </head>
+
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
     <a href="/"><img class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo"></a>
 
     <%= form_tag( movies_path, method: "get", id: "search-form") do %>
@@ -33,6 +35,7 @@
           <li>
             <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
           </li>
+          <li>
             <%= link_to('Edit registration', edit_user_registration_path) %>
           </li>
           <li>

@@ -29,6 +29,11 @@
 }
 
 
+p {
+  display: inline;
+  font-size: 1.6em;
+}
+
 html {
   font-style: bold;
 }
@@ -104,3 +109,4 @@ li {
   margin-top: 20px;
   margin-left: 30px;
 }
+
