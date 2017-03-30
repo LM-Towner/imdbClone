@@ -11,4 +11,10 @@ class FavoritesController < ApplicationController
       redirect_to new_user_session_path
     end
   end
+
+  def destroy
+    @favorite = Favorite.find_by(id: params[:id])
+    @favorite.destroy
+    redirect_to :back
+  end
 end

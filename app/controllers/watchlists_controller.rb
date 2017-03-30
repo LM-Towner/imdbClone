@@ -11,4 +11,10 @@ class WatchlistsController < ApplicationController
       redirect_to new_user_session_path
     end
   end
+
+  def destroy
+    @watchlist = Watchlist.find_by(id: params[:id])
+    @watchlist.destroy
+    redirect_to :back
+  end
 end

@@ -5,8 +5,17 @@
   <p>
     <span><%= @movie.watchlisting_users.count %> watchlists</span>
     <span><%= @movie.favoriting_users.count %> favorites</span>
-    <%= link_to 'Add to Watchlist', movie_watchlists_path(@movie), method: :post %>
-    <%= link_to 'Add to Favorites', movie_favorites_path(@movie), method: :post %>
+
+    <% if @movie.watchlisting_users.include?(current_user) %>
+      <%= link_to 'Remove from Watchlist', [@movie, @movie.watchlists.find_by(user_id: current_user.id)], method: :delete %>
+    <% else %>
+      <%= link_to 'Add to Watchlist', movie_watchlists_path(@movie), method: :post %>
+    <% end %>
+    <% if @movie.favoriting_users.include?(current_user) %>
+      <%= link_to 'Remove from Favorites', [@movie, @movie.favorites.find_by(user_id: current_user.id)], method: :delete %>
+    <% else %>
+      <%= link_to 'Add to Favorites', movie_favorites_path(@movie), method: :post %>
+    <% end %>
   </p>
   <p><%= @movie.genre %></p>
   <p><%= @movie.plot_summary %></p>
