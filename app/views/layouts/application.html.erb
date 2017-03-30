@@ -45,7 +45,7 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <img class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo">
+    <a href="/"><img class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo"></a>
     <%= form_tag( movies_path, method: "get", id: "search-form") do %>
       <% end %>
     <%= form_tag search_url, method: "get", id: "search-form" do %>
