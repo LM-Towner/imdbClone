@@ -19,16 +19,19 @@
     <ul>
     <% if user_signed_in? %>
     <li>
+      <%= link_to("Home", user_session_path)%>
+    </li>
+    <li>
       <%= "Welcome #{current_user.username}" %>
     </li>
     <li>
       <%= link_to('Edit registration', edit_user_registration_path) %>
     </li>
     <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      <%= link_to "My Profile", current_user %>
     </li>
     <li>
-      <%= link_to("My Profile", user_session_path)%>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
     </li>
       <% else %>
       <li>
@@ -43,9 +46,11 @@
 </ul>
   </nav>
   <body>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <a href="/"><img class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo"></a>
+
     <%= form_tag( movies_path, method: "get", id: "search-form") do %>
       <% end %>
     <%= form_tag search_url, method: "get", id: "search-form" do %>
