@@ -21,7 +21,6 @@ class CommentsController < ApplicationController
   def find_commentable
     params.each do |name, value|
       if name =~ /(.+)_id$/
-        binding.pry
         return $1.classify.constantize.find(value)
       end
     end
