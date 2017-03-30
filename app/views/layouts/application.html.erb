@@ -18,7 +18,7 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <a href="/"><img class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo"></a>
+    <a href="/"><img id="header" class="brand-logo" src= "<%= asset_path('IMDB.jpeg') %>" alt="IMDB Logo"></a>
 
     <%= form_tag( movies_path, method: "get", id: "search-form") do %>
       <% end %>
@@ -26,6 +26,7 @@
       <%= text_field_tag :search, params[:search], placeholder: "The Land Before Time" %>
       <%= submit_tag "Search Movies", name: nil %>
     <% end %>
+<<<<<<< HEAD
     <nav>
       <ul>
         <% if user_signed_in? %>
@@ -51,5 +52,6 @@
     <div id='content-wrapper'>
       <%= yield %>
     </div>
+
   </body>
 </html>
