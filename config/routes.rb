@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :reviews, only: [:destroy, :edit, :update] do
     resources :comments, only: [:create]
   end
-  resources :comments, only: [:destroy, :edit, :update]
+  resources :comments, only: [:destroy, :edit, :update] do
+    resources :comments, only: [:create]
+  end
 
   get 'search', to: "movies#search"
 
