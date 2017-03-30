@@ -9,10 +9,18 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: {in: 6..20}
 
+  def activity_feed
+    stories = []
+    stories << self.favorites
+    stories << self.comments
+    stories << self.reviews
+  end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
   private
 
   has_many :favorites
-  has_many :watchlist
+  has_many :watchlists
 end

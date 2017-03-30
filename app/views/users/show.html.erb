@@ -4,23 +4,36 @@
 
 <hr>
 
-
 <div class="container">
   <h3>All of <%=@user.username%>'s Favorite Movies</h3>
   <ul>
     <%@user.favorite_movies.each do |movie|  %>
-    <li>  <%= movie.title %></li>
-
+    <li><%= link_to(movie.title, movie_url(movie)) %><b> (<%= "Created on #{long_form_date(movie.created_at)}" %>)</b></li>
     <% end %>
   </ul>
 </div>
+
+ <hr>
+
+ <div class="container">
+     <h3><%= @user.username%>'s Reviews </h3>
+       <ul>
+       <% @user.reviews.each do |review| %>
+       <li> <b><%="#{@user.username} said:"%>  </b><%="#{review.text} about"%> <b><%="#{review.movie.title}" %></b></li>
+       <li> <b> (<%= "Created on #{long_form_date(review.created_at)}" %>)</b> </li>
+       <br>
+       <% end %>
+     </ul>
+ </div>
  <hr>
 
 <div class="container">
-    <h3><%= @user.username%>'s watchlists </h3>
+    <h3><%= @user.username%>'s Watchlists </h3>
       <ul>
-      <% @user.watchlist.each do |watchlist| %>
-          
+      <% @user.watchlist_movies.each do |movie| %>
+        <li><%= link_to(movie.title, movie_url(movie)) %></li>
+        <li><b>(<%= "Created on #{long_form_date(movie.created_at)}" %>)</b></li>
+        <br>
       <% end %>
     </ul>
 </div>
@@ -28,10 +41,14 @@
 <hr>
 
 <div class="container">
-    <h3><%= @user.username%>'s comments </h3>
+    <h3><%= @user.username%>'s Comments </h3>
       <ul>
-      <% @user.comments.each do |comments| %>
-      <li><%= comments.text %></li>
+      <% @user.comments.each do |comment| %>
+      <li><%= comment.text %></li>
+      <li> <b>(<%= "Created on #{long_form_date(comment.created_at)}" %>)</b></li>
+      <br>
       <% end %>
     </ul>
 </div>
+
+<%=  %>
