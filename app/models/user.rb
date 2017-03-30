@@ -14,5 +14,5 @@ class User < ApplicationRecord
   private
 
   has_many :favorites
-  has_many :watchlist
+  has_many :watchlists
 end

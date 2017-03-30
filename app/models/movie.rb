@@ -23,13 +23,17 @@ class Movie < ApplicationRecord
     if self.find_by(title: query)
       return self.preload(:reviews, :comments, :reviewing_users, :commenting_users).find_by(title: query)
     else
-      self.create(title: movie["Title"],
-                   genre: movie["Genre"],
-                   release_date: DateTime.parse(movie["Released"]),
-                   plot_summary: movie["Plot"],
-                   production: movie["Production"],
-                   poster: movie["Poster"],
-                   website: movie["Website"])
+      if movie["Response"] == "True"
+        self.create(title: movie["Title"],
+                     genre: movie["Genre"],
+                     release_date: DateTime.parse(movie["Released"]),
+                     plot_summary: movie["Plot"],
+                     production: movie["Production"],
+                     poster: movie["Poster"],
+                     website: movie["Website"])
+      else
+        movie["Error"]
+      end
     end
   end
 
