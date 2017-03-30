@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
       @comment = @commentable.comments.build(comment_params)
       @comment.user = current_user
       @comment.save
+      track_activity @comment
       #error handling?
       redirect_to :back
     else

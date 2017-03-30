@@ -1,10 +1,10 @@
-<div class="">
+<div class="field">
   <h2><%=@user.username%>'s Profile</h2>
 </div>
 
 <hr>
 
-<div class="">
+<div class="field">
   <h3>All of <%=@user.username%>'s favorite_movies</h3>
   <ul>
     <%@user.favorite_movies.each do |movie|  %>
@@ -13,7 +13,7 @@
   </ul>
 </div>
 
-<div class="">
+<div class="field">
     <h3><%= @user.username%>'s watchlists </h3>
       <ul>
       <% user.watchlist.each do |watchlist| %>
@@ -22,7 +22,7 @@
     </ul>
 </div>
 
-<div class="">
+<div class="field">
     <h3><%= @user.username%>'s watchlists </h3>
       <ul>
       <% user.watchlist.each do |watchlist| %>
