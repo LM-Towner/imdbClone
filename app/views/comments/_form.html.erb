@@ -1,8 +1,6 @@
 <div class='comment-form'>
-  <h4>Add a Comment</h4>
-  <%= form_for([@commentable, Comment.new]) do |f| %>
+  <%= form_for([commentable, Comment.new]) do |f| %>
     <fieldset>
-      <%= f.label :text %>
       <%= f.text_area :text %>
     </fieldset>
     <%= f.submit %>

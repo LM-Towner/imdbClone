@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
-  resources :reviews, only: [:destroy, :edit, :update]
+  resources :reviews, only: [:destroy, :edit, :update] do
+    resources :comments, only: [:create]
+  end
   resources :comments, only: [:destroy, :edit, :update]
 
   get 'search', to: "movies#search"

@@ -10,6 +10,7 @@
     <% end %>
   </div>
   <div class='review-comments'>
+    <%= render partial: 'comments/form', locals: { :commentable => review } %>
     <%= render review.comments %>
   </div>
 </div>
