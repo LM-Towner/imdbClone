@@ -1,5 +1,5 @@
 <div class='comment-form'>
-  <%= form_for([commentable, Comment.new]) do |f| %>
+  <%= form_for([commentable, Comment.new], remote: true) do |f| %>
     <%= f.text_area :text %>
     <%= f.submit %>
   <% end %>

@@ -4,10 +4,16 @@ class CommentsController < ApplicationController
       @commentable = find_commentable
       @comment = @commentable.comments.build(comment_params)
       @comment.user = current_user
-      @comment.save
       track_activity @comment
+      respond_to do |format|
+        if @comment.save
+          format.js
+        else
+          format.html {redirect_to :back}
+        end
+      end
       #error handling?
-      redirect_to :back
+
     else
       redirect_to new_user_session_path
     end
