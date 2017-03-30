@@ -31,10 +31,6 @@ class Movie < ApplicationRecord
                    poster: movie["Poster"],
                    website: movie["Website"])
     end
-
-
-
->>>>>>> bb37db4b0c9ae975aedc9f43b74f12183c5ffbe4
   end
 
 
