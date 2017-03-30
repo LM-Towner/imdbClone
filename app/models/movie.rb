@@ -22,15 +22,21 @@ class Movie < ApplicationRecord
     movie = JSON.parse(response)
 
     if self.find_by(title: query)
+      # binding.pry
       return self.preload(:reviews, :comments, :reviewing_users, :commenting_users).find_by(title: query)
     else
-      self.create(title: movie["Title"],
-                   genre: movie["Genre"],
-                   release_date: DateTime.parse(movie["Released"]),
-                   plot_summary: movie["Plot"],
-                   production: movie["Production"],
-                   poster: movie["Poster"],
-                   website: movie["Website"])
+      binding.pry
+      if movie["Response"] == "True"
+        self.create(title: movie["Title"],
+                     genre: movie["Genre"],
+                     release_date: DateTime.parse(movie["Released"]),
+                     plot_summary: movie["Plot"],
+                     production: movie["Production"],
+                     poster: movie["Poster"],
+                     website: movie["Website"])
+      else
+        movie["Error"]
+      end
     end
 
 
