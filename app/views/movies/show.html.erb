@@ -5,6 +5,8 @@
   <p>
     <span><%= @movie.watchlisting_users.count %> watchlists</span>
     <span><%= @movie.favoriting_users.count %> favorites</span>
+    <%= link_to 'Add to Watchlist', movie_watchlists_path(@movie), method: :post %>
+    <%= link_to 'Add to Favorites', movie_favorites_path(@movie), method: :post %>
   </p>
   <p><%= @movie.genre %></p>
   <p><%= @movie.plot_summary %></p>

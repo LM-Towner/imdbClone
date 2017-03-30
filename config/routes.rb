@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :movies, only: [:index, :show] do
     resources :comments, only: [:create]
     resources :reviews, only: [:create]
+    resources :watchlists, only: [:create]
+    resources :favorites, only: [:create]
   end
 
   get 'search', to: "movies#search"
