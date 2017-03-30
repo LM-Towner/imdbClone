@@ -13,7 +13,7 @@
 <div class='reviews-container'>
   <div class='review-form'>
     <h4>Add a Review</h4>
-    <%= form_for([@movie, Review.new]) do |f| %>
+    <%= form_for([@movie, Review.new], remote: true) do |f| %>
       <fieldset>
         <%= f.label :rating %>
         <%= f.select(:rating, options_for_select([["🌟", 1],["🌟🌟", 2],["🌟🌟🌟", 3], ["🌟🌟🌟🌟", 4]])) %>
