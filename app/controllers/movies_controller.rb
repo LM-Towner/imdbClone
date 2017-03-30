@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
 
 
   def search
+
     if params[:search] == ""
       redirect_to :back
     else
