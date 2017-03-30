@@ -36,3 +36,20 @@ p {
 html {
   font-style: bold;
 }
+
+h3 {
+  font-size: 10px;
+  padding-left: 30px;
+}
+
+.container {
+   display: inline-block;
+   position: relative;
+   width: 100%;
+
+}
+
+li {
+
+  padding-left: 30px;
+}
