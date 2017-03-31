@@ -7,13 +7,13 @@ class CommentsController < ApplicationController
       track_activity @comment
       respond_to do |format|
         if @comment.save
+          format.html {redirect_to :back}
           format.js
         else
           format.html {redirect_to :back}
         end
       end
       #error handling?
-
     else
       redirect_to new_user_session_path
     end
