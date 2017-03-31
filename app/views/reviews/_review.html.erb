@@ -1,0 +1,16 @@
+<div class='review'>
+  <h4><%= '🌟' * review.rating %></h4>
+  <p><%= review.text %></p>
+  <div class='conversation-footer'>
+    <span><%= review.user.username %></span>
+    <span><%= distance_of_time_in_words(Time.now, review.created_at) %> ago</span>
+    <% if review.user == current_user %>
+      <%= link_to "Delete This", review_path(review), method: :delete %>
+      <%= link_to "Edit This", edit_review_path(review) %>
+    <% end %>
+  </div>
+  <div class='review-comments'>
+    <%= render partial: 'comments/form', locals: { :commentable => review } %>
+    <%= render review.comments %>
+  </div>
+</div>

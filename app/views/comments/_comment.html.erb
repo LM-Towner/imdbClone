@@ -1,0 +1,17 @@
+<div class='comment'>
+  <p><%= comment.text %></p>
+  <div class='conversation-footer'>
+    <span><%= comment.user.username %></span>
+    <span><%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</span>
+    <% if comment.user == current_user %>
+      <%= link_to 'Delete This', comment_path(comment), method: :delete %>
+      <%= link_to 'Edit This', edit_comment_path(comment) %>
+    <% end %>
+  </div>
+  <div class='comment-comments'>
+    <% if comment.commentable.is_a?(Movie) %>
+      <%= render partial: 'comments/form', locals: { commentable: comment } %>
+    <% end %>
+    <%= render comment.comments %>
+  </div>
+</div>

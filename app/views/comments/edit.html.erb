@@ -1,0 +1,13 @@
+<h2>Edit Your Comment</h2>
+<div class='comment-form'>
+  <%= form_for @comment, url: comment_path(@comment), method: :patch do |f| %>
+    <fieldset>
+      <%= f.label :text %>
+      <%= f.text_area :text, html: { value: @comment.text } %>
+    </fieldset>
+    <%= f.hidden_field :user_id, html: { value: @comment.user_id } %>
+    <%= f.hidden_field :commentable_id, html: { value: @comment.commentable_id } %>
+    <%= f.hidden_field :commentable_type, html: { value: @comment.commentable_type } %>
+    <%= f.submit %>
+  <% end %>
+</div>
