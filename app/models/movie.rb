@@ -15,6 +15,7 @@ class Movie < ApplicationRecord
   has_many :watchlists
 
   def self.database_query(query)
+
     if self.find_by(title: query)
       return self.find_by(title: query)
     else
