@@ -5,7 +5,7 @@
     <span><%= review.user.username %></span>
     <span><%= distance_of_time_in_words(Time.now, review.created_at) %> ago</span>
     <% if review.user == current_user %>
-      <%= link_to "Delete This", review_path(review), method: :delete %>
+      <%= link_to "Delete This", review_path(review), remote: true, method: :delete %>
       <%= link_to "Edit This", edit_review_path(review) %>
     <% end %>
   </div>

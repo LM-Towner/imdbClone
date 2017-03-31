@@ -8,8 +8,10 @@ class ReviewsController < ApplicationController
       track_activity @review
       respond_to do |format|
         if @review.save
-          format.js
+          format.js {}
+          format.html { redirect_to :back }
         else
+          format.js { redirect_to :back }
           format.html {redirect_to :back}
         end
       end
@@ -21,7 +23,10 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find_by(id: params[:id])
     @review.destroy if @review.user == current_user
-    redirect_to :back
+    respond_to do |format|
+      format.js {}
+      format.html { redirect_to :back }
+    end
   end
 
   def edit

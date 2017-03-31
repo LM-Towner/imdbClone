@@ -1,2 +1,4 @@
-$(".reviews-container").append(' <%= j render @review %>');
+$(".reviews-container").append("<%= escape_javascript(render @review) %>");
+$(".review-form select").val(1);
+$(".review-form textarea").val("");
 $(".review-form").hide();
