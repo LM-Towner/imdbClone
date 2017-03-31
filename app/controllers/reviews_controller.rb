@@ -4,11 +4,15 @@ class ReviewsController < ApplicationController
       @movie = Movie.find_by(id: params[:movie_id])
       @review = @movie.reviews.build(review_params)
       @review.user = current_user
-      @review.save
       # current_user.activities.create! action: "create", trackable: review
       track_activity @review
-      #error handling?
-      redirect_to :back
+      respond_to do |format|
+        if @review.save
+          format.js
+        else
+          format.html {redirect_to :back}
+        end
+      end
     else
       redirect_to new_user_session_path
     end
